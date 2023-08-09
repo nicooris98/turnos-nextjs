@@ -1,3 +1,5 @@
+import { PublicLayoutNavbar } from "@/app/shared/components/layout"
+
 const PublicLayout = ({
   children,
 }: {
@@ -6,7 +8,7 @@ const PublicLayout = ({
   return (
     <>
       <div>
-        <h1>Public Layout</h1>
+        <PublicLayoutNavbar />
         <div>{children}</div>
       </div>
     </>
