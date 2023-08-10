@@ -9,7 +9,7 @@ const PublicLayout = ({
     <>
       <div>
         <PublicLayoutNavbar />
-        <div>{children}</div>
+        <div className="main">{children}</div>
       </div>
     </>
   )

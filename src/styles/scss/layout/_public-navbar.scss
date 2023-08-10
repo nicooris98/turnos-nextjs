@@ -1,5 +1,5 @@
 .public-navbar {
-  background: $lightBlueA;
+  background: $whiteA;
   width: 100%;
   height: 50px;
   border: 1px solid $blackA;
@@ -17,4 +17,25 @@
 .burger {
   background: none !important;
   color: $blackA !important;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style-type: none;
+}
+
+.sidebar-item {
+  font-size: 20px;
+  padding: 10px;
+  cursor: pointer;
+  background-color: $whiteA;
+  transition: 1s;
+  &:hover {
+    cursor: pointer;
+    background-color: $grayA;
+    transition: 1s;
+    color: $whiteA;
+  }
 }

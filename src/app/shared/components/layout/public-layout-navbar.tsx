@@ -2,9 +2,16 @@
 import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
 import { useState } from "react";
+import { PUBLIC_SIDEBAR_MENU } from "@/app/config/public-sidebar.config";
+import { useRouter } from 'next/navigation'
 
 export const PublicLayoutNavbar = () => {
   const [visible, setVisible] = useState(false);
+  const router = useRouter()
+
+  const handleClick = (url: string) => {
+    router.push(url)
+  }
 
   return (
     <>
@@ -15,11 +22,16 @@ export const PublicLayoutNavbar = () => {
       </div>
     </div>
     <Sidebar visible={visible} onHide={() => setVisible(false)}>
-        <h2>Sidebar</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
+        <h2>Menu</h2>
+        <ul className="sidebar">
+        {
+          PUBLIC_SIDEBAR_MENU.ITEMS.map((el, index) => (
+            <li key={index} className="sidebar-item" onClick={() => handleClick(el.url)}>
+              <span>{el.label}</span>
+            </li>
+          ))
+        }
+        </ul>
     </Sidebar>
     </>
   )

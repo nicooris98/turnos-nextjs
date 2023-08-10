@@ -1,0 +1,23 @@
+.shift-main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.shift-title {
+  h2 {
+    font-size: 30px;
+  }
+}
+
+.shift-calendar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.algo {
+  border: 1px solid black;
+  width: 50%;
+}
