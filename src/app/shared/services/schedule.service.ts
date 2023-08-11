@@ -1,10 +1,13 @@
+import { ScheduleModel } from "../models"
+
 export class ScheduleService {
   public async fetchSchedules() {
-    let results = []
+    let results: ScheduleModel[] = []
     await fetch(`${process.env.NEXT_PUBLIC_API_URL}/schedules`)
-    .then(async (response: any) => {
-      results = await response.json()
-    })
+      .then((res) => res.json())
+      .then((data: ScheduleModel[]) => {
+        results = data
+      })
     return results
   }
 }

@@ -14,9 +14,11 @@
   padding: 10px;
 }
 
-.burger {
-  background: none !important;
-  color: $blackA !important;
+.p-button {
+  &.burger {
+    background: none;
+    color: $blackA;
+  }
 }
 
 .sidebar {

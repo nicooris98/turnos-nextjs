@@ -2,10 +2,10 @@
 import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
 import { useState } from "react";
-import { PUBLIC_SIDEBAR_MENU } from "@/app/config/public-sidebar.config";
 import { useRouter } from 'next/navigation'
+import { PUBLIC_SIDEBAR_MENU } from "@/app/config";
 
-export const PublicLayoutNavbar = () => {
+export const PublicHeader = () => {
   const [visible, setVisible] = useState(false);
   const router = useRouter()
 
