@@ -17,7 +17,31 @@
   gap: 5px;
 }
 
-.algo {
-  border: 1px solid black;
-  width: 50%;
+.shift-form-card {
+  background-color: $whiteA;
+  padding: 20px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .shift-input-text {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .shift-input-number {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .shift-input-textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+
+  .shift-button-save {
+    width: 100%;
+  }
 }
