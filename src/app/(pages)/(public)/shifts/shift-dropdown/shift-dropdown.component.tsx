@@ -30,6 +30,10 @@ export const ShiftDropdownComponent = () => {
     setSelectedSchedule(e.value)
   }
 
+  const handleVisible = (value: boolean) => {
+    if(!value) setSelectedSchedule(null)
+  }
+
   return (
     <>
       <Dropdown
@@ -43,7 +47,7 @@ export const ShiftDropdownComponent = () => {
 
       {
         selectedSchedule && (
-          <ShiftFormComponent schedule={selectedSchedule}/>
+          <ShiftFormComponent setVisible={handleVisible} schedule={selectedSchedule}/>
         )
       }
     </>

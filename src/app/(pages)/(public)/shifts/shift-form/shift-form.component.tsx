@@ -6,15 +6,21 @@ import { useFormik } from "formik"
 import { Button } from "primereact/button"
 import { useEffect } from "react"
 import { object, string, number } from "yup"
+import { Toast } from 'primereact/toast';
+import React, { useRef } from 'react';
 
 type ShiftFormProps = {
   schedule: ScheduleModel
+  setVisible: (value: boolean) => void
 }
 
 export const ShiftFormComponent = ({
-  schedule
+  schedule,
+  setVisible
 }: ShiftFormProps) => {
   const shiftService = new ShiftService()
+  const toast = useRef(null);
+
   const newSchema = object({
     firstName: string().required("Nombre requerido."),
     lastName: string().required("Apellido requerido."),
@@ -36,8 +42,10 @@ export const ShiftFormComponent = ({
   }
 
   const handleSubmit = async (values: typeof initialValues) => {
-    const newShift = await shiftService.postShift(values)
-    console.log(newShift)
+    await shiftService.postShift(values)
+    formik.resetForm()
+    toast.current.show({severity:'success', summary: 'Success', detail:'Turno reservado correctamente', life: 3000})
+    setVisible(false)
   }
 
   const formik = useFormik({
@@ -126,6 +134,7 @@ export const ShiftFormComponent = ({
 
           <Button label="Guardar" type="submit" className="shift-button-save" />
       </form>
+      <Toast ref={toast} />
     </div>
   )
 }
