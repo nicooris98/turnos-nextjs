@@ -1,6 +1,7 @@
 import { UiInputNumberComponent, UiInputTextComponent } from "@/app/shared/components"
 import { UiInputTextareaComponent } from "@/app/shared/components/ui/form/ui-input-textarea.component"
 import { ScheduleModel, ShiftModel } from "@/app/shared/models"
+import { ShiftService } from "@/app/shared/services/shift.service"
 import { useFormik } from "formik"
 import { Button } from "primereact/button"
 import { useEffect } from "react"
@@ -13,6 +14,7 @@ type ShiftFormProps = {
 export const ShiftFormComponent = ({
   schedule
 }: ShiftFormProps) => {
+  const shiftService = new ShiftService()
   const newSchema = object({
     firstName: string().required("Nombre requerido."),
     lastName: string().required("Apellido requerido."),
@@ -33,12 +35,15 @@ export const ShiftFormComponent = ({
     date: new Date()
   }
 
+  const handleSubmit = async (values: typeof initialValues) => {
+    const newShift = await shiftService.postShift(values)
+    console.log(newShift)
+  }
+
   const formik = useFormik({
     validationSchema: newSchema,
     initialValues,
-    onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
-    },
+    onSubmit: handleSubmit
   })
 
   useEffect(() => {
